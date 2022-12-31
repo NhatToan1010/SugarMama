@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".OTPVerification"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close"
+            android:background="#00000000"
+            android:id="@+id/btnOTPClose"
+            android:transitionName="transition_otp_close"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verify Account"
+            android:textAlignment="center"
+            android:textColor="#BF707070"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/muli_semibold"
+            android:includeFontPadding="false"/>
+
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="30dp"
+            android:src="@drawable/ic_verify" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile verification has\n successfully sent!"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:fontFamily="@font/muli_bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A message has been sent to"
+            android:textAlignment="center"
+            android:textColor="@color/grey"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+XXXXXXXXXX"
+            android:id="@+id/tvPhoneNo"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:textColor="@color/grey"/>
+        <com.chaos.view.PinView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/otpPin"
+            app:itemHeight="50dp"
+            app:itemWidth="50dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            app:itemCount="6"
+            app:lineColor="#80A09D9D"
+            app:cursorColor="@color/light_grey"
+            android:itemBackground="#1AA09D9D"
+            style="@style/PinWidget.PinView"
+            android:inputType="number"
+            android:cursorVisible="true"
+            app:hideLineWhenFilled="true"
+            app:itemRadius="5dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If you don't receive the code!"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Resend"
+                android:id="@+id/btnOTPResend"
+                android:textColor="@color/peach"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnVerify"
+            android:background="@drawable/button_bg_10rad"
+            android:text="Verify"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"/>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "236553642434",
+    "firebase_url": "https://sugarmama-3f358-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "sugarmama-3f358",
+    "storage_bucket": "sugarmama-3f358.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236553642434:android:9a5dd3d6c9f1e2b9aa765b",
+        "android_client_info": {
+          "package_name": "com.acer.sugarmama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236553642434-927o1safc002nlc2s2kf469i6725h65e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acer.sugarmama",
+            "certificate_hash": "21cb6f9ac06dca09053e74debb1b6bbb03d6a2a8"
+          }
+        },
+        {
+          "client_id": "236553642434-hu7c9rk388bs8tpsipgai84cgtbtu1up.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR6p_xogcjUL_J7Pn2i7q_sUq3yWKJqv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236553642434-hu7c9rk388bs8tpsipgai84cgtbtu1up.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

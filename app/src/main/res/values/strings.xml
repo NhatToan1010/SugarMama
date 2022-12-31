@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SugarMama</string>
+
+    <style name="font_color">
+        <item name="android:textColor">@color/light_peach_200</item>
+    </style>
+
+    <string name="tittle">Find The Best Sweet \n Cakes Here Easily</string>
+    <string name="tittle2">Find And Try The Best \n Our Sweetest Cakes</string>
+</resources>
