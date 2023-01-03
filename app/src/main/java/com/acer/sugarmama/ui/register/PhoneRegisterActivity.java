@@ -1,4 +1,4 @@
-package com.acer.sugarmama;
+package com.acer.sugarmama.ui.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,10 +9,9 @@ import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.acer.sugarmama.ui.verify.OTPVerification;
+import com.acer.sugarmama.R;
 import com.google.android.material.textfield.TextInputLayout;
 import com.hbb20.CountryCodePicker;
 

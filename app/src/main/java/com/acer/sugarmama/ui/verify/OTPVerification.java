@@ -1,4 +1,4 @@
-package com.acer.sugarmama;
+package com.acer.sugarmama.ui.verify;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,14 +7,14 @@ import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.acer.sugarmama.R;
 import com.acer.sugarmama.database.User;
+import com.acer.sugarmama.ui.register.PhoneRegisterActivity;
 import com.chaos.view.PinView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,7 +22,6 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -71,7 +70,7 @@ public class OTPVerification extends AppCompatActivity implements View.OnClickLi
                             DatabaseReference reference = database.getReference("Users");
 
                             User newUser = new User(fullName, email, password, phoneNo);
-                            reference.child(phoneNo).setValue(newUser);
+                            reference.child(email).setValue(newUser);
                             Toast.makeText(OTPVerification.this, "Success!", Toast.LENGTH_SHORT).show();
                         } else {
 

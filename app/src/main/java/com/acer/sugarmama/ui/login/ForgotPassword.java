@@ -1,4 +1,4 @@
-package com.acer.sugarmama;
+package com.acer.sugarmama.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.acer.sugarmama.ui.verify.EmailVerification;
+import com.acer.sugarmama.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class ForgotPassword extends AppCompatActivity implements View.OnClickListener {

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LoginActivity"
+    tools:context=".ui.login.LoginActivity"
     android:paddingTop="10dp"
     android:paddingStart="20dp"
     android:paddingEnd="20dp"
@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="  Email or Phone number"
+                android:text="  Email"
                 android:id="@+id/tvEmail"
                 android:fontFamily="@font/muli_semibold"
                 android:textColor="@color/light_grey"
@@ -205,15 +205,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/progressbarLogin"
-                android:padding="15dp"
                 android:layout_below="@+id/edtLoginPassword"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/progressbar_bg">
+
                 <ProgressBar
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_centerInParent="true"
-                    android:theme="@style/Widget.AppCompat.ProgressBar"/>
+                    android:theme="@style/Widget.AppCompat.ProgressBar" />
             </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>

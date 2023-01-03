@@ -1,4 +1,4 @@
-package com.acer.sugarmama;
+package com.acer.sugarmama.ui.verify;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
 
+import com.acer.sugarmama.R;
+import com.acer.sugarmama.ui.login.ForgotPassword;
+import com.acer.sugarmama.ui.login.LoginActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class EmailVerification extends AppCompatActivity implements View.OnClickListener {
