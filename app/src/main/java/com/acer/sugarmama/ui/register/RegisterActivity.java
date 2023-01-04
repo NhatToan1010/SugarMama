@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnNext:
-                if (checkTheInternet()){
+                if (!checkTheInternet()){
                     return;
                 }
                 String _name = edtFullName.getEditText().getText().toString().trim();
