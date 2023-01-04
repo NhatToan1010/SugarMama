@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.acer.sugarmama.ui.login.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SplashScreen extends AppCompatActivity {
     private Button btnStart;
@@ -25,10 +27,15 @@ public class SplashScreen extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                Pair<View, String> pairs = new Pair<>(btnStart, "transition_login");
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this, pairs);
-                startActivity(intent, options.toBundle());
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user == null){
+                    Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
+                    Pair<View, String> pairs = new Pair<>(btnStart, "transition_login");
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this, pairs);
+                    startActivity(intent, options.toBundle());
+                }
+                Intent homeIntent = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(homeIntent);
             }
         });
     }

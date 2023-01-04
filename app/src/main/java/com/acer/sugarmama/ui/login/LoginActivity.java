@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(verifyIntent, verifyOption.toBundle());
                 break;
             case R.id.btnLogin:
-                if (checkTheInternet()){
+                if (!checkTheInternet()){
                     return;
                 }
                 String email = edtEmail.getEditText().getText().toString().trim();
@@ -123,6 +123,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             progressBar.setVisibility(View.INVISIBLE);
+                            Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(homeIntent);
                             Toast.makeText(LoginActivity.this, "Login Success!",
                                     Toast.LENGTH_SHORT).show();
                         } else {

@@ -6,7 +6,7 @@ plugins {
 android {
     namespace 'com.acer.sugarmama'
     compileSdk 32
-    buildToolsVersion '23.0.1'
+    buildToolsVersion '33.0.1'
 
     defaultConfig {
         applicationId "com.acer.sugarmama"
@@ -53,4 +53,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-database:20.1.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
+
 }

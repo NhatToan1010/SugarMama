@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:title="Home"
-        android:id="@+id/itemHome"
+        android:id="@+id/home"
         android:icon="@drawable/ic_home"/>
     <item android:title="Favorite"
-        android:id="@+id/itemFavorite"
+        android:id="@+id/favorite"
         android:icon="@drawable/ic_favorite"/>
     <item android:title="Cart"
-        android:id="@+id/itemCart"
+        android:id="@+id/cart"
         android:icon="@drawable/ic_bag"/>
 </menu>
