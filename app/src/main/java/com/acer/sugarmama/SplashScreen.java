@@ -40,9 +40,12 @@ public class SplashScreen extends AppCompatActivity {
                     Pair<View, String> pairs = new Pair<>(btnStart, "transition_login");
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this, pairs);
                     startActivity(intent, options.toBundle());
+                    finish();
+                }else {
+                    Intent homeIntent = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(homeIntent);
                 }
-                Intent homeIntent = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(homeIntent);
+                finish();
             }
         });
     }
