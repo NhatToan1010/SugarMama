@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -17,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.acer.sugarmama.SplashScreen;
 import com.acer.sugarmama.ui.verify.EmailVerification;
 import com.acer.sugarmama.MainActivity;
 import com.acer.sugarmama.R;
@@ -30,14 +32,13 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextInputLayout edtEmail, edtPassword;
-    private RelativeLayout progressBar;
     private FirebaseAuth mAuth;
+    private ProgressDialog progressDialog;
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -46,11 +47,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.btnForgot).setOnClickListener(this);
         findViewById(R.id.btnLogin).setOnClickListener(this);
 
-        progressBar = findViewById(R.id.progressbarLogin);
-        progressBar.setVisibility(View.INVISIBLE);
-
         edtEmail = findViewById(R.id.edtLoginEmail);
         edtPassword = findViewById(R.id.edtLoginPassword);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait");
 
         setErrorToFalse();
     }
@@ -62,10 +62,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnLoginBack:
-                Intent intent = new Intent(this, MainActivity.class);
-                Pair<View, String> pair = new Pair<>(findViewById(R.id.btnLoginBack), "transition_login_back");
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, pair);
-                startActivity(intent, options.toBundle());
+                Intent intent = new Intent(this, SplashScreen.class);
+                startActivity(intent);
                 break;
             case R.id.tvRegister:
                 Intent regIntent = new Intent(this, RegisterActivity.class);
@@ -116,19 +114,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     */
 
     private void loginWithEmail(String email, String password){
-        progressBar.setVisibility(View.VISIBLE);
+        progressDialog.show();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            progressBar.setVisibility(View.INVISIBLE);
+                            progressDialog.dismiss();
                             Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(homeIntent);
-                            Toast.makeText(LoginActivity.this, "Login Success!",
-                                    Toast.LENGTH_SHORT).show();
+                            finish();
                         } else {
-                            progressBar.setVisibility(View.INVISIBLE);
+                            progressDialog.dismiss();
                             Toast.makeText(LoginActivity.this, "User did not exit",
                                     Toast.LENGTH_SHORT).show();
                         }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -23,18 +24,20 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextInputLayout edtFullName, edtEmail, edtPassword, edtConfirm;
+    private ProgressDialog progressDialog;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         findViewById(R.id.btnNext).setOnClickListener(this);
         findViewById(R.id.tvLogin).setOnClickListener(this);
@@ -43,6 +46,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         edtEmail = findViewById(R.id.edtRegEmail);
         edtPassword = findViewById(R.id.edtRegPassword);
         edtConfirm = findViewById(R.id.edtRepeat);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait");
 
         setErrorToFalse();
     }
@@ -105,27 +110,43 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     */
 
     private void registerWithEmail(User user){
+        progressDialog.show();
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            progressDialog.dismiss();
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference reference = database.getReference("Users");
-
-                            reference.setValue(user);
+//                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+//                            DatabaseReference reference = database.getReference("Users");
+//
+//                            reference.setValue(user);
+                            setUser(user);
+                            Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                            startActivity(mainIntent);
                             Toast.makeText(RegisterActivity.this, "Register success!",
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             // If sign in fails, display a message to the user.
+                            progressDialog.dismiss();
                             Toast.makeText(RegisterActivity.this, "Register failed.",
                                     Toast.LENGTH_SHORT).show();
 
                         }
                     }
                 });
+    }
+    private void setUser(User newUser){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(newUser.getFullName())
+                .build();
+
+        assert user != null;
+        user.updateProfile(profileUpdates);
     }
 
     /*

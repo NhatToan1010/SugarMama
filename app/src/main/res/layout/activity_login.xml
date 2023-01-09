@@ -18,21 +18,13 @@
         android:weightSum="3">
         <ImageView
             android:layout_width="32dp"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
             android:src="@drawable/ic_back"
             android:id="@+id/btnLoginBack"
             android:transitionName="transition_login_back"
             tools:ignore="ContentDescription" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="40sp"
-            android:fontFamily="@font/muli_semibold"
-            android:layout_margin="20dp"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -201,20 +193,6 @@
                     android:id="@+id/tvRegister"
                     android:textColor="@color/peach"/>
             </LinearLayout>
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressbarLogin"
-                android:layout_below="@+id/edtLoginPassword"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/progressbar_bg">
-
-                <ProgressBar
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_centerInParent="true"
-                    android:theme="@style/Widget.AppCompat.ProgressBar" />
-            </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
 

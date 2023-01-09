@@ -25,7 +25,6 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
         btnStart = findViewById(R.id.btn_Start);
         btnStart.setOnClickListener(new View.OnClickListener() {
@@ -37,9 +36,9 @@ public class SplashScreen extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user == null){
                     Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-                    Pair<View, String> pairs = new Pair<>(btnStart, "transition_login");
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this, pairs);
-                    startActivity(intent, options.toBundle());
+//                    Pair<View, String> pairs = new Pair<>(btnStart, "transition_login");
+//                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this, pairs);
+                    startActivity(intent);
                     finish();
                 }else {
                     Intent homeIntent = new Intent(SplashScreen.this, MainActivity.class);

@@ -7,53 +7,215 @@
     tools:context=".ui.profile.Profile">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/bg_main"
-        android:paddingBottom="10dp">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_margin="20dp"
-            android:src="@drawable/img_avt"
-            android:layout_gravity="center"/>
-        <TextView
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:id="@+id/tvProfileName"
-            android:textSize="20dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:fontFamily="@font/muli_semibold"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:id="@+id/tvProfileEmail"
-            android:textAlignment="center"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical">
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+            <ImageView
+                android:layout_height="32dp"
+                android:layout_width="32dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_back"
+                android:id="@+id/btnProfileBack"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/muli_bold"
+                android:text="My Profile"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp">
-            <TextView
+            android:paddingBottom="10dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="20dp"
+                android:id="@+id/imgAvatar"
+                android:src="@drawable/img_avt"
+                android:layout_gravity="center"/>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign out"
-                android:id="@+id/btnSignOut"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:drawableStart="@drawable/ic_sign_out"
-                android:drawablePadding="10dp"/>
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:id="@+id/tvProfileName"
+                    android:textSize="17sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/muli_semibold"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="@color/black"
+                    android:id="@+id/tvProfileEmail"/>
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Edit Profile"
+                    android:id="@+id/btnEditProfile"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/button_bg"
+                    android:layout_marginTop="15dp"/>
+            </LinearLayout>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#80A09D9D"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Phone"
+                android:id="@+id/tvProfilePhone"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/muli_semibold"
+                android:layout_marginStart="100dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Address"
+                android:id="@+id/tvProfileAddress"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/muli_semibold"
+                android:layout_marginStart="100dp"/>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#80A09D9D"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/btnLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_link_account"
+            android:drawableEnd="@drawable/ic_next"
+            android:drawablePadding="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="Linked Account"
+            android:fontFamily="@font/muli_semibold"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            tools:ignore="UseCompatTextViewDrawableXml" />
+        <TextView
+            android:id="@+id/btnAnnounce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_announce"
+            android:drawableEnd="@drawable/ic_next"
+            android:drawablePadding="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="Announce"
+            android:fontFamily="@font/muli_semibold"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            tools:ignore="UseCompatTextViewDrawableXml" />
+        <TextView
+            android:id="@+id/btnChangePass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_change_password"
+            android:drawableEnd="@drawable/ic_next"
+            android:drawablePadding="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="Change Password"
+            android:fontFamily="@font/muli_semibold"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            tools:ignore="UseCompatTextViewDrawableXml" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#80A09D9D"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/btnPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_privacy_policy"
+            android:drawableEnd="@drawable/ic_next"
+            android:drawablePadding="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:layout_marginBottom="10dp"
+            android:text="Privacy Policy"
+            android:fontFamily="@font/muli_semibold"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            tools:ignore="UseCompatTextViewDrawableXml" />
+        <TextView
+            android:id="@+id/btnSignOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_sign_out"
+            android:drawableEnd="@drawable/ic_next"
+            android:drawablePadding="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="Logout"
+            android:fontFamily="@font/muli_semibold"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            tools:ignore="UseCompatTextViewDrawableXml" />
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
