@@ -7,11 +7,13 @@ import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.acer.sugarmama.CheckTheInternet;
 import com.acer.sugarmama.R;
 import com.acer.sugarmama.ui.login.ForgotPassword;
 import com.acer.sugarmama.ui.login.LoginActivity;
@@ -39,11 +41,15 @@ public class EmailVerification extends AppCompatActivity implements View.OnClick
         progressDialog.setMessage("Please wait");
     }
 
+    /*
+    * OnCLick Events
+    */
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnSendOTP:
+                checkTheInternet();
                 if (!validateEmail()){
                     return;
                 }
@@ -64,6 +70,9 @@ public class EmailVerification extends AppCompatActivity implements View.OnClick
                 break;
         }
     }
+    /*
+    * Send email
+    */
     private void sendPasswordToEmail(){
         progressDialog.show();
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -84,6 +93,21 @@ public class EmailVerification extends AppCompatActivity implements View.OnClick
                     }
                 });
     }
+    /*
+    * Check Internet Connection
+    */
+    private void checkTheInternet() {
+        CheckTheInternet checkTheInternet = new CheckTheInternet();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(!checkTheInternet.isConnected(this)){
+                return;
+            }
+        }
+    }
+
+    /*
+    * Validate data
+    */
     private boolean validateEmail(){
         String email = edtEmail.getEditText().getText().toString().trim();
         String checkEmail = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";

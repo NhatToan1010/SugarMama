@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -30,9 +31,7 @@ public class SplashScreen extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!checkTheInternet()){
-                    return;
-                }
+                checkTheInternet();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user == null){
                     Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
@@ -51,18 +50,12 @@ public class SplashScreen extends AppCompatActivity {
     /*
      * Check Internet Connection
      */
-    private boolean checkTheInternet() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo wifiConn = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo mobileConn = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-
-        if((mobileConn != null && mobileConn.isConnected()) || (wifiConn != null && wifiConn.isConnected())){
-            return true;
-        }
-        else {
-            Toast.makeText(this, "Internet Connection Required!",
-                    Toast.LENGTH_SHORT).show();
-            return false;
+    private void checkTheInternet() {
+        CheckTheInternet checkTheInternet = new CheckTheInternet();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(!checkTheInternet.isConnected(this)){
+                return;
+            }
         }
     }
 }

@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.acer.sugarmama.CheckTheInternet;
 import com.acer.sugarmama.ui.verify.EmailVerification;
 import com.acer.sugarmama.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -32,6 +34,48 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
         setErrorToFalse();
     }
 
+
+    /*
+    * OnClick Events
+    */
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btnFPassBack:
+                Intent eBackIntent = new Intent(this, EmailVerification.class);
+                Pair<View, String> pair = new Pair<>(findViewById(R.id.btnFPassBack), "transition_email_back");
+                ActivityOptions eBackOption = ActivityOptions.makeSceneTransitionAnimation(this, pair);
+                startActivity(eBackIntent, eBackOption.toBundle());
+                break;
+            case R.id.btnFPass:
+                checkTheInternet();
+                if(!validatePassword() | !validateConfirm()){
+                    return;
+                }
+                Toast.makeText(this, "Password reset!",
+                        Toast.LENGTH_SHORT).show();
+                Intent logBackIntent = new Intent(this, LoginActivity.class);
+                ActivityOptions logBackOption = ActivityOptions.makeScaleUpAnimation(
+                        v, 0 , 0, v.getWidth(), v.getHeight());
+                startActivity(logBackIntent, logBackOption.toBundle());
+                break;
+        }
+    }
+    /*
+    * Check Internet Connection
+    */
+    private void checkTheInternet() {
+        CheckTheInternet checkTheInternet = new CheckTheInternet();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(!checkTheInternet.isConnected(this)){
+                return;
+            }
+        }
+    }
+    /*
+    * Validate data
+    */
     private void setErrorToFalse(){
         edtPassword.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -54,31 +98,6 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             }
         });
     }
-
-    @SuppressLint("NonConstantResourceId")
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btnFPassBack:
-                Intent eBackIntent = new Intent(this, EmailVerification.class);
-                Pair<View, String> pair = new Pair<>(findViewById(R.id.btnFPassBack), "transition_email_back");
-                ActivityOptions eBackOption = ActivityOptions.makeSceneTransitionAnimation(this, pair);
-                startActivity(eBackIntent, eBackOption.toBundle());
-                break;
-            case R.id.btnFPass:
-                if(!validatePassword() | !validateConfirm()){
-                    return;
-                }
-                Toast.makeText(this, "Password reset!",
-                        Toast.LENGTH_SHORT).show();
-                Intent logBackIntent = new Intent(this, LoginActivity.class);
-                ActivityOptions logBackOption = ActivityOptions.makeScaleUpAnimation(
-                        v, 0 , 0, v.getWidth(), v.getHeight());
-                startActivity(logBackIntent, logBackOption.toBundle());
-                break;
-        }
-    }
-
     private boolean validatePassword(){
         String password = edtPassword.getEditText().getText().toString().trim();
         String checkPass = "^" +

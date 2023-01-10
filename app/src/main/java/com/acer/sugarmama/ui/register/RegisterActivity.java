@@ -10,11 +10,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.acer.sugarmama.CheckTheInternet;
 import com.acer.sugarmama.MainActivity;
 import com.acer.sugarmama.R;
 import com.acer.sugarmama.database.User;
@@ -26,8 +27,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -62,9 +61,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnNext:
-                if (!checkTheInternet()){
-                    return;
-                }
+                checkTheInternet();
                 String _name = edtFullName.getEditText().getText().toString().trim();
                 String _email = edtEmail.getEditText().getText().toString().trim();
                 String _password = edtPassword.getEditText().getText().toString().trim();
@@ -91,17 +88,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     * Check Internet Connection
     */
 
-    private boolean checkTheInternet() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo wifiConn = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo mobileConn = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-
-        if ((mobileConn != null && mobileConn.isConnected()) || (wifiConn != null && wifiConn.isConnected())) {
-            return true;
-        } else {
-            Toast.makeText(this, "Internet Connection Required!",
-                    Toast.LENGTH_SHORT).show();
-            return false;
+    private void checkTheInternet() {
+        CheckTheInternet checkTheInternet = new CheckTheInternet();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(!checkTheInternet.isConnected(this)){
+                return;
+            }
         }
     }
 
@@ -126,8 +118,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             setUser(user);
                             Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
                             startActivity(mainIntent);
-                            Toast.makeText(RegisterActivity.this, "Register success!",
-                                    Toast.LENGTH_SHORT).show();
                         } else {
                             // If sign in fails, display a message to the user.
                             progressDialog.dismiss();
