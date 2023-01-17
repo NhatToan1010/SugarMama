@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class EmailVerification extends AppCompatActivity implements View.OnClickListener {
 
@@ -86,12 +87,27 @@ public class EmailVerification extends AppCompatActivity implements View.OnClick
                             progressDialog.dismiss();
                             Toast.makeText(EmailVerification.this, "Email sent!",
                                     Toast.LENGTH_SHORT).show();
+                            Intent loginIntent = new Intent(EmailVerification.this, LoginActivity.class);
+                            startActivity(loginIntent);
                         }else {
                             Toast.makeText(EmailVerification.this, "Email sent failed!",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+//        FirebaseAuth auth = FirebaseAuth.getInstance();
+//        FirebaseUser user = auth.getCurrentUser();
+//
+//        user.sendEmailVerification()
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful()) {
+//                            Toast.makeText(EmailVerification.this, "Email sent!",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
     }
     /*
     * Check Internet Connection

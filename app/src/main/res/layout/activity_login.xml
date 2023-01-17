@@ -11,6 +11,7 @@
     android:background="@color/light_peach_200"
     android:transitionName="transition_login">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,7 +24,10 @@
             android:id="@+id/btnLoginBack"
             android:transitionName="transition_login_back"
             tools:ignore="ContentDescription" />
-
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:src="@drawable/cakeshop_bg" />
 
         <RelativeLayout
             android:layout_width="match_parent"

@@ -66,18 +66,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.btnLoginBack:
                 Intent intent = new Intent(this, SplashScreen.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.tvRegister:
                 Intent regIntent = new Intent(this, RegisterActivity.class);
                 ActivityOptions regOptions = ActivityOptions.makeScaleUpAnimation
                         (v, 0, 0, v.getWidth(), v.getHeight());
                 startActivity(regIntent, regOptions.toBundle());
+                finish();
                 break;
             case R.id.btnForgot:
                 Intent verifyIntent = new Intent(this, EmailVerification.class);
                 ActivityOptions verifyOption = ActivityOptions.makeScaleUpAnimation(
                         v, 0, 0, v.getWidth(), v.getHeight());
                 startActivity(verifyIntent, verifyOption.toBundle());
+                finish();
                 break;
             case R.id.btnLogin:
                 checkTheInternet();

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.Profile">
+    tools:context=".ui.profile.Profile"
+    android:background="#05A09D9D">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,6 +31,7 @@
                 android:text="My Profile"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,73 +81,93 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="#80A09D9D"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginBottom="10dp"/>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="5dp"
+            android:background="@color/white">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phone"
+                android:textColor="@color/black"
+                android:textSize="16sp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"/>
+
             <TextView
+                android:id="@+id/tvProfilePhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Show Phone"
-                android:id="@+id/tvProfilePhone"
-                android:textSize="16sp"
-                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="240dp"
                 android:fontFamily="@font/muli_semibold"
-                android:layout_marginStart="100dp"/>
+                android:text="Show Phone" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_next"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="5dp"
+            android:background="@color/white">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Address"
+                android:textSize="16sp"
+                android:textColor="@color/black"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Show Address"
+                android:layout_centerVertical="true"
                 android:id="@+id/tvProfileAddress"
-                android:textSize="16sp"
-                android:textColor="@color/black"
                 android:fontFamily="@font/muli_semibold"
-                android:layout_marginStart="100dp"/>
+                android:layout_marginStart="240dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_next"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"/>
         </RelativeLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#80A09D9D"
+            android:background="#00A09D9D"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="10dp"/>
         <TextView
             android:id="@+id/btnLink"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:drawableStart="@drawable/ic_link_account"
             android:drawableEnd="@drawable/ic_next"
             android:drawablePadding="15dp"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="5dp"
             android:text="Linked Account"
+            android:background="@color/white"
             android:fontFamily="@font/muli_semibold"
             android:textColor="@color/black"
             android:textSize="17sp"
@@ -153,14 +175,16 @@
         <TextView
             android:id="@+id/btnAnnounce"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:drawableStart="@drawable/ic_announce"
             android:drawableEnd="@drawable/ic_next"
             android:drawablePadding="15dp"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
             android:text="Announce"
+            android:gravity="center_vertical"
+            android:background="@color/white"
             android:fontFamily="@font/muli_semibold"
             android:textColor="@color/black"
             android:textSize="17sp"
@@ -168,13 +192,15 @@
         <TextView
             android:id="@+id/btnChangePass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:drawableStart="@drawable/ic_change_password"
             android:drawableEnd="@drawable/ic_next"
             android:drawablePadding="15dp"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:background="@color/white"
+            android:layout_marginBottom="5dp"
             android:text="Change Password"
             android:fontFamily="@font/muli_semibold"
             android:textColor="@color/black"
@@ -183,20 +209,22 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="#80A09D9D"
+                android:background="#00A09D9D"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"/>
         <TextView
             android:id="@+id/btnPolicy"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:drawableStart="@drawable/ic_privacy_policy"
             android:drawableEnd="@drawable/ic_next"
             android:drawablePadding="15dp"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"
+            android:background="@color/white"
             android:text="Privacy Policy"
             android:fontFamily="@font/muli_semibold"
             android:textColor="@color/black"
@@ -205,13 +233,15 @@
         <TextView
             android:id="@+id/btnSignOut"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:drawableStart="@drawable/ic_sign_out"
             android:drawableEnd="@drawable/ic_next"
             android:drawablePadding="15dp"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
+            android:gravity="center_vertical"
             android:text="Logout"
+            android:background="@color/white"
             android:fontFamily="@font/muli_semibold"
             android:textColor="@color/black"
             android:textSize="17sp"
