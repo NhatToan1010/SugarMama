@@ -3,51 +3,202 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.Home">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <RelativeLayout
+        android:scrollbarSize="0dp">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="UseCompatTextViewDrawableXml">
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:fontFamily="@font/muli_bold"
-                android:text="Sweet Food"
-                android:textColor="@color/black" />
+                android:padding="10dp"
+                android:background="@color/light_peach_500">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:fontFamily="@font/muli_bold"
+                    android:text="Sweet Food"
+                    android:textColor="@color/black" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:id="@+id/btnProfile"
-                android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true"
-                android:src="@drawable/img_avt" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:id="@+id/btnProfile"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/img_avt" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Greeting,"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp"
+                    android:id="@+id/tvGreeting"
+                    android:layout_toStartOf="@+id/btnProfile"
+                    android:layout_marginEnd="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nguyen Tu Nhat Toan"
+                    android:id="@+id/tvHomeName"
+                    android:layout_below="@+id/tvGreeting"
+                    android:layout_toStartOf="@id/btnProfile"
+                    android:layout_marginEnd="15dp"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                android:id="@+id/homeSearchBar"
+                android:padding="5dp"
+                android:drawableStart="@drawable/ic_search"
+                android:drawablePadding="10dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/bg_20rad"
+                android:gravity="center_vertical"
+                tools:ignore="UseCompatTextViewDrawableXml" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/banner_christmas4"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_20rad"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Holidays Sale"
+                    android:id="@+id/tvHolidays"
+                    android:textColor="@color/pine_green"
+                    android:textSize="30sp"
+                    android:textStyle="bold|italic"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25%"
+                    android:includeFontPadding="false"
+                    android:id="@+id/tv25percent"
+                    android:textColor="@color/banner_red"
+                    android:textSize="40sp"
+                    android:fontFamily="@font/muli_bold"
+                    android:textStyle="italic"
+                    android:layout_below="@+id/tvHolidays"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvHolidays"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toEndOf="@+id/tv25percent"
+                    android:fontFamily="@font/muli_bold"
+                    android:text="discount"
+                    android:textColor="@color/pine_green"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="for Christmas cakes"
+                    android:textColor="@color/pine_green"
+                    android:layout_below="@+id/tv25percent"
+                    android:textSize="20sp"
+                    android:textStyle="italic"
+                    android:fontFamily="@font/muli_bold"
+                    android:layout_marginStart="40dp"
+                    android:includeFontPadding="false"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="from 1st - 24th December"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/banner_red"
+                    android:textStyle="italic"
+                    android:layout_below="@+id/tv25percent"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="30dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Discover"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/banner_red"
+                    android:textStyle="italic"
+                    android:layout_below="@+id/tv25percent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginEnd="20dp"/>
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:src="@drawable/banner_design"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="-7dp"
+                    android:layout_marginEnd="-25dp"/>
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Greeting,"
-                android:textColor="@color/light_grey"
-                android:textSize="12sp"
-                android:id="@+id/tvGreeting"
-                android:layout_toStartOf="@+id/btnProfile"
-                android:layout_marginEnd="15dp"/>
-            <TextView
+                android:id="@+id/rvHomeFlavor"
+                android:layout_marginEnd="5dp"
+                android:layout_marginTop="20dp"/>
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nguyen Tu Nhat Toan"
-                android:id="@+id/tvHomeName"
-                android:layout_below="@+id/tvGreeting"
-                android:layout_toStartOf="@id/btnProfile"
-                android:layout_marginEnd="15dp"
-                android:textColor="@color/grey"/>
-        </RelativeLayout>
-    </LinearLayout>
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Top Products"
+                    android:textSize="30dp"
+                    android:textColor="#BF000000"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/muli_bold"
+                    android:layout_marginStart="10dp"/>
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_shining"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All"
+                    android:textSize="17sp"
+                    android:textColor="@color/peach"
+                    android:fontFamily="@font/muli_bold"
+                    android:layout_marginStart="75dp"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.acer.sugarmama.R;
-import com.acer.sugarmama.database.User;
+import com.acer.sugarmama.model.User;
 import com.acer.sugarmama.ui.register.PhoneRegisterActivity;
 import com.chaos.view.PinView;
 import com.google.android.gms.tasks.OnCompleteListener;

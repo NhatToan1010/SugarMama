@@ -1,4 +1,4 @@
-package com.acer.sugarmama.database;
+package com.acer.sugarmama.model;
 
 public class User {
     String fullName, email, password, phoneNo, address;
