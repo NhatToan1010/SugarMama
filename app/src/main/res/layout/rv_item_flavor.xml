@@ -6,30 +6,29 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/button_bg">
+        android:background="@drawable/button_bg_10rad">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Chocolate"
             android:textSize="12sp"
+            android:fontFamily="@font/muli_bold"
             android:id="@+id/rvFlavorText"
             android:textColor="@color/white"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"/>
         <ImageView
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:id="@+id/rvFlavorImg"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/bg_500rad"
             android:src="@drawable/ic_chocolate"
-            android:padding="5dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_below="@id/rvFlavorText"
+            android:layout_marginTop="10dp"
+            android:layout_above="@id/rvFlavorText"
             android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

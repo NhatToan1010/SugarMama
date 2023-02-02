@@ -44,20 +44,13 @@
                 android:src="@drawable/ic_check_green" />
         </RelativeLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgEditAvatar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/img_avt" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:fontFamily="@font/muli_bold"
+            android:layout_marginTop="10dp"
             android:text="Your Information"
             android:textColor="@color/black"
             android:textSize="17sp" />
