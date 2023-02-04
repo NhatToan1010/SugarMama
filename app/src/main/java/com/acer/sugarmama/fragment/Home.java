@@ -1,6 +1,7 @@
 package com.acer.sugarmama.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.acer.sugarmama.adapter.RVFlavorAdapter;
 import com.acer.sugarmama.adapter.RVProductAdapter;
 import com.acer.sugarmama.model.Flavor;
 import com.acer.sugarmama.model.TopProduct;
+import com.acer.sugarmama.ui.ProductList.ViewAll;
 import com.acer.sugarmama.ui.profile.Profile;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,7 +43,7 @@ import java.util.List;
 
 public class Home extends Fragment implements View.OnClickListener {
 
-    private TextView tvName;
+    private TextView tvName, viewAll;
     private ImageView imgAvt;
     private View mView;
     private RecyclerView rvFlavor, rvProduct;
@@ -50,6 +52,7 @@ public class Home extends Fragment implements View.OnClickListener {
     private FirebaseFirestore db;
     private List<Flavor> flavorList;
     private List<TopProduct> productList;
+    private ProgressDialog progressDialog;
 
     public Home() {
         // Required empty public constructor
@@ -77,7 +80,8 @@ public class Home extends Fragment implements View.OnClickListener {
     private void initView(){
         imgAvt = mView.findViewById(R.id.btnProfile);
         tvName = mView.findViewById(R.id.tvHomeName);
-
+        viewAll = mView.findViewById(R.id.homeViewAll);
+        viewAll.setOnClickListener(this);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         String name = user.getDisplayName();
@@ -87,6 +91,7 @@ public class Home extends Fragment implements View.OnClickListener {
         tvName.setText(name);
         Glide.with(this).load(photoUrl).error(R.drawable.img_avt).into(imgAvt);
 
+        progressDialog = new ProgressDialog(getActivity());
     }
 
     private void initFlavorAdapter(){
@@ -117,6 +122,7 @@ public class Home extends Fragment implements View.OnClickListener {
     }
 
     private void initProductAdapter(){
+        progressDialog.show();
         productList = new ArrayList<>();
         rvProduct = mView.findViewById(R.id.rvProduct);
         productAdapter = new RVProductAdapter(getActivity(), productList);
@@ -135,6 +141,7 @@ public class Home extends Fragment implements View.OnClickListener {
                                 productList.add(topProduct);
                                 productAdapter.notifyDataSetChanged();
                             }
+                            progressDialog.dismiss();
                         } else {
                             Toast.makeText(getActivity(), "Product Error",
                                     Toast.LENGTH_SHORT).show();
@@ -146,12 +153,18 @@ public class Home extends Fragment implements View.OnClickListener {
     private void initListener(){
         mView.findViewById(R.id.btnProfile).setOnClickListener(this);
     }
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnProfile:
                 Intent profileIntent = new Intent(getActivity(), Profile.class);
                 startActivity(profileIntent);
+                break;
+            case R.id.homeViewAll:
+                Intent viewAllIntent = new Intent(getActivity(), ViewAll.class);
+                viewAllIntent.putExtra("type_key", "All Product");
+                startActivity(viewAllIntent);
                 break;
         }
     }

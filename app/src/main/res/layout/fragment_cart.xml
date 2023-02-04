@@ -1,15 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.Cart"
-    android:background="#00ff00">
+    tools:context=".fragment.Cart">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back"
+            android:layout_margin="5dp"
+            android:id="@+id/cartBack"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/muli_bold"
+            android:text="Cart"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:textSize="25sp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/img_avt"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/cartBack"
+            android:id="@+id/cartAvt"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deliver to"
+            android:fontFamily="@font/muli_semibold"
+            android:id="@+id/cartDeliver"
+            android:layout_toEndOf="@id/cartAvt"
+            android:layout_below="@id/cartBack"
+            android:layout_alignBaseline="@id/cartAvt"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User Name"
+            android:fontFamily="@font/muli_semibold"
+            android:id="@+id/cartUserName"
+            android:layout_toEndOf="@id/cartDeliver"
+            android:layout_below="@id/cartBack"
+            android:layout_alignBaseline="@id/cartAvt"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/peach"
+            android:text="9H Nguyen Van Troi, Xuan Khanh, Ninh Kieu, Can Tho"
+            android:id="@+id/cartAddress"
+            android:fontFamily="@font/muli_semibold"
+            android:layout_toEndOf="@id/cartAvt"
+            android:layout_marginStart="10dp"
+            android:layout_below="@id/cartUserName"
+
+            android:layout_marginEnd="10dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cartAvt"
+            android:id="@+id/rvCartProduct"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subtotal:"
+            android:layout_below="@id/rvCartProduct"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Price"
+            android:id="@+id/cartPrice"
+            android:textSize="17sp"
+            android:fontFamily="@font/muli_bold"
+            android:textColor="@color/black"
+            android:layout_below="@id/rvCartProduct"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivery fee:"
+            android:layout_below="@id/cartPrice"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deliver Price"
+            android:id="@+id/cartDeliverPrice"
+            android:textSize="17sp"
+            android:fontFamily="@font/muli_bold"
+            android:textColor="@color/black"
+            android:layout_below="@id/cartPrice"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discount:"
+            android:layout_below="@+id/cartDeliverPrice"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deliver Price"
+            android:id="@+id/cartDiscount"
+            android:textSize="17sp"
+            android:fontFamily="@font/muli_bold"
+            android:textColor="@color/black"
+            android:layout_below="@+id/cartDeliverPrice"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <View
+            android:layout_width="400dp"
+            android:layout_height="1dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/light_grey"
+            android:layout_below="@id/cartDiscount"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total:"
+            android:textSize="20sp"
+            android:fontFamily="@font/muli_bold"
+            android:textColor="@color/black"
+            android:layout_below="@id/cartDiscount"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Price"
+            android:id="@+id/cartTotalPrice"
+            android:textSize="20sp"
+            android:fontFamily="@font/muli_bold"
+            android:textColor="@color/peach"
+            android:layout_below="@id/cartDiscount"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            app:drawableStartCompat="@drawable/ic_dollar" />
+        <Button
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_bg_10rad"
+            android:text="Continue"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/muli_semibold"
+            android:layout_below="@id/cartTotalPrice"
+            android:layout_marginTop="10dp"/>
+    </RelativeLayout>
+
+
 
 </FrameLayout>
