@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -35,8 +36,6 @@ public class SplashScreen extends AppCompatActivity {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user == null){
                     Intent intent = new Intent(SplashScreen.this, LoginActivity.class);
-//                    Pair<View, String> pairs = new Pair<>(btnStart, "transition_login");
-//                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreen.this, pairs);
                     startActivity(intent);
                     finish();
                 }else {

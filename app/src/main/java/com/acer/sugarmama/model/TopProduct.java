@@ -1,6 +1,8 @@
 package com.acer.sugarmama.model;
 
-public class TopProduct {
+import java.io.Serializable;
+
+public class TopProduct implements Serializable {
     private String name;
     private String price;
     private String rating;

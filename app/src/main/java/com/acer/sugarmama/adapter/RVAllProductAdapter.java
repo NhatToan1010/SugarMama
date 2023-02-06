@@ -1,6 +1,8 @@
 package com.acer.sugarmama.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.acer.sugarmama.R;
 import com.acer.sugarmama.model.AllProduct;
+import com.acer.sugarmama.ui.ProductList.DetailProduct;
 import com.bumptech.glide.Glide;
 
 import org.w3c.dom.Text;
@@ -36,12 +39,20 @@ public class RVAllProductAdapter extends RecyclerView.Adapter<RVAllProductAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RVAllProductAdapter.AllProductViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RVAllProductAdapter.AllProductViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Glide.with(context).load(mList.get(position).getImgUrl()).into(holder.productImg);
         holder.name.setText(mList.get(position).getName());
         holder.description.setText(mList.get(position).getDescription());
         holder.rating.setText(mList.get(position).getRating());
         holder.price.setText(mList.get(position).getPrice());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailProduct.class);
+                intent.putExtra("detail_key", mList.get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
