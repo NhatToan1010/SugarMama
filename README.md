@@ -1,1 +1,1 @@
-An Bakery application built by Java.
+A Bakery Android application built by Java.
